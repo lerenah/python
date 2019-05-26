@@ -41,7 +41,7 @@ def flatten(node):
   while current != None:
     if current.down:
       end_node = flatten(current.down)
-      current.set_next(end_node.get_next())
+      end_node.set_next(current.get_next())
     current = current.next
   return end_node
 
