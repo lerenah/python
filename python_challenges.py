@@ -28,5 +28,21 @@ class Linked_List:
     else:
       return False
 
+node_values = [1,2,3,4,5,6,7,8,9,10]
+node_list = []
+
+for val in node_values:
+  node_list.append(Linked_List(val))
+
+
+def flatten(node):
+  current = node
+  end_node = node
+  while current != None:
+    if current.down:
+      end_node = flatten(current.down)
+      current.set_next(end_node.get_next())
+    current = current.next
+  return end_node
 
 
