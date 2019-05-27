@@ -49,3 +49,26 @@ def flatten(node):
   return end_node
 
 
+def circle_of_kids(n, m):
+    last_kid = 0
+    count = 0
+    start = 0
+    kids = []
+    for i in range(1, n + 1):
+        kids.append(i)
+
+    while count <= m and len(kids) > 1:
+        count += 1
+        if count == m:
+            if count <= len(kids):
+                kids.remove(kids[count - 1])
+                start = count - 1
+            else:
+                start = m - (len(kids) + 1)
+                kids.remove(kids[start])
+            if start < len(kids):
+                last_kid = kids[start]
+                kids = kids[start:] + kids[:start]
+            count = 0
+
+    return last_kid
