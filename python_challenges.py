@@ -72,3 +72,13 @@ def circle_of_kids(n, m):
             count = 0
 
     return last_kid
+
+
+  class Binary_Tree:
+
+    def __init__(self, value):
+      self.value = value
+      self.left = None
+      self.right = None
+
+  
