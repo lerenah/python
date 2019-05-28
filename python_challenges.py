@@ -73,6 +73,24 @@ def circle_of_kids(n, m):
 
     return last_kid
 
+class Node:
+    def __init__(self, value):
+      self.value = value
+      self.left = None
+
+head = Node(1)
+
+def create_linked_list(input_list):
+    """
+    Function to create a linked list
+    @param input_list: a list of integers
+    @return: head node of the linked list
+    """
+    head = Node(input_list[0])
+    while len(input_list):
+      
+
+    return head
 
   class Binary_Tree:
 
@@ -81,4 +99,5 @@ def circle_of_kids(n, m):
       self.left = None
       self.right = None
 
-  
+
+
