@@ -80,6 +80,30 @@ class Node:
 
 head = Node(1)
 
+class DoubleNode:
+  def __init__(self, value):
+    self.value = value
+    self.next = None
+    self.previous = None
+
+class DoublyLinkedList:
+  def __init__(self):
+    self.head = None
+    self.tail = None
+
+  def insert_node(self, value):
+    if self.head is None:
+      self.head = DoubleNode(value)
+      self.tail = self.head
+      return
+    else:
+      self.tail.next = DoubleNode(value)
+      self.tail.next.previous = self.tail
+      self.tail = self.tail.next
+      return 
+
+
+
 def create_linked_list(input_list):
     """
     Function to create a linked list
