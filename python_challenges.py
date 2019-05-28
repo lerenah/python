@@ -90,11 +90,10 @@ def create_linked_list(input_list):
     for num in input_list:
       if head is None:
         head = Node(num)
+        tail = head
       else:
-        current = head
-        while current.next:
-          current = current.next
-        current.next = Node(num)
+        tail.next = Node(num)
+        tail = tail.next
     return head
 
   # class Binary_Tree:
