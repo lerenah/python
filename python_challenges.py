@@ -86,18 +86,23 @@ def create_linked_list(input_list):
     @param input_list: a list of integers
     @return: head node of the linked list
     """
-    head = Node(input_list[0])
-    while len(input_list):
-      
-
+    head = None
+    for num in input_list:
+      if head is None:
+        head = Node(num)
+      else:
+        current = head
+        while current.next:
+          current = current.next
+        current.next = Node(num)
     return head
 
-  class Binary_Tree:
+  # class Binary_Tree:
 
-    def __init__(self, value):
-      self.value = value
-      self.left = None
-      self.right = None
+  #   def __init__(self, value):
+  #     self.value = value
+  #     self.left = None
+  #     self.right = None
 
 
 
