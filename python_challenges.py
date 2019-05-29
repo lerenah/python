@@ -76,7 +76,7 @@ def circle_of_kids(n, m):
 class Node:
     def __init__(self, value):
       self.value = value
-      self.left = None
+      self.next = None
 
 head = Node(1)
 
@@ -100,8 +100,7 @@ class DoublyLinkedList:
       self.tail.next = DoubleNode(value)
       self.tail.next.previous = self.tail
       self.tail = self.tail.next
-      return 
-
+      return
 
 
 def create_linked_list(input_list):
@@ -120,12 +119,22 @@ def create_linked_list(input_list):
         tail = tail.next
     return head
 
-  # class Binary_Tree:
+class Linked_List2:
+  def __init__(self):
+    self.head = None
 
-  #   def __init__(self, value):
-  #     self.value = value
-  #     self.left = None
-  #     self.right = None
+  def prepend(self, value):
+    '''Prepending to the beginning of the list.'''
+    if self.head is None:
+      self.head = Node(value)
+      return
+    else:
+      old_head = self.head
+      self.head = Node(value)
+      self.head.next = old_head
+      return 
+
+
 
 
 
