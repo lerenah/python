@@ -142,6 +142,37 @@ class Binary_Node:
 
 class Binary_Tree:
   def __init__(self, root):
+    self.root = Node(root)
+
+  def print_tree(self, traversal_type):
+    if traversal_type == 'preorder':
+      return self.preorder_traversal(self.root, '')
+    elif traversal_type == 'postorder':
+      return self.postorder_traversal(self.root, '')
+    else:
+      return self.inorder_traversal(self.root, '')
+
+  def preorder_traversal(self, node, traversal):
+    if node:
+      traversal += (str(node.value) + '<-->')
+      traversal = self.preorder_traversal(node.left, traversal)
+      traversal  = self.preorder_traversal(node.right, traversal)
+    return traversal
+
+  def postorder_traversal(self, node, traversal):
+    if node:
+      traversal += (str(node.left.value) + '<-->')
+      traversal = self.postorder_traversal(node.right, traversal)
+      traversal = self.postorder_traversal(node, traversal)
+    return traversal
+
+  def inorder_traversal(self, node, traversal):
+    if node:
+      traversal += (str(node.value) + '<-->')
+      traveral = inorder_traversal(node.left)
+
+
+
 
 
 
