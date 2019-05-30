@@ -137,12 +137,12 @@ class Linked_List2:
 class Binary_Node:
   def __init__(self, value):
     self.value = value
-    self.left = left
-    self.right = right
+    self.left = None
+    self.right = None
 
 class Binary_Tree:
   def __init__(self, root):
-    
+
 
 
 
