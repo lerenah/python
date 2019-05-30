@@ -142,34 +142,40 @@ class Binary_Node:
 
 class Binary_Tree:
   def __init__(self, root):
-    self.root = Node(root)
+    self.root = Binary_Node(root)
 
-  def print_tree(self, traversal_type):
-    if traversal_type == 'preorder':
-      return self.preorder_traversal(self.root, '')
-    elif traversal_type == 'postorder':
-      return self.postorder_traversal(self.root, '')
+  def add_node(self, value):
+    if self.root is None:
+      self.root = Binary_Node(value)
     else:
-      return self.inorder_traversal(self.root, '')
+      node = self.root
+      if not node.left:
+        node.left = Binary_Node(value)
+      elif not node.right:
+        node.right = Binary_Node(value)
+      else:
+        node.left.left = Binary_Node(value)
 
-  def preorder_traversal(self, node, traversal):
+  def preorder_traversal(self, node):
     if node:
-      traversal += (str(node.value) + '<-->')
-      traversal = self.preorder_traversal(node.left, traversal)
-      traversal  = self.preorder_traversal(node.right, traversal)
-    return traversal
+      print(str(node.value) + '<-->')
+      self.preorder_traversal(node.left)
+      self.preorder_traversal(node.right)
 
-  def postorder_traversal(self, node, traversal):
-    if node:
-      traversal += (str(node.left.value) + '<-->')
-      traversal = self.postorder_traversal(node.right, traversal)
-      traversal = self.postorder_traversal(node, traversal)
-    return traversal
 
-  def inorder_traversal(self, node, traversal):
+  def postorder_traversal(self, node):
     if node:
-      traversal += (str(node.value) + '<-->')
-      traveral = inorder_traversal(node.left)
+      self.postorder_traversal(node.left)
+      self.postorder_traversal(node.right)
+      print(str(node.value) + '<-->')
+
+  def inorder_traversal(self, node):
+    if node:
+      self.inorder_traversal(node.left)
+      print(str(node.value) + '<-->')
+      self.inorder_traversal(node.right)
+
+
 
 
 
