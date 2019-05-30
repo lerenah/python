@@ -132,7 +132,18 @@ class Linked_List2:
       old_head = self.head
       self.head = Node(value)
       self.head.next = old_head
-      return 
+      return
+
+class Binary_Node:
+  def __init__(self, value):
+    self.value = value
+    self.left = left
+    self.right = right
+
+class Binary_Tree:
+  def __init__(self, root):
+    
+
 
 
 
