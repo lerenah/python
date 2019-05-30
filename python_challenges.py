@@ -149,12 +149,16 @@ class Binary_Tree:
       self.root = Binary_Node(value)
     else:
       node = self.root
-      if not node.left:
-        node.left = Binary_Node(value)
-      elif not node.right:
-        node.right = Binary_Node(value)
-      else:
-        node.left.left = Binary_Node(value)
+      if value < node.value:
+        if not node.left:
+          node.left = Binary_Node(value)
+        else:
+          self.add_node(node.left)
+      elif value > node.value:
+        if not node.right:
+          node.right = Binary_Node(value)
+        else:
+          self.add_node(node.right)
 
   def preorder_traversal(self, node):
     if node:
