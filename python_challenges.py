@@ -245,8 +245,10 @@ def get_near_neighbors(row, col, web):
 
     return friends
 
-print(get_near_neighbors(3, 2, matrix))
 
+'''
+Solves MineSweeper game!
+'''
 def safe_steps(web):
     for idx, val in enumerate(web):
         for index, el in enumerate(val):
