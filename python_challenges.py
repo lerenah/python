@@ -181,7 +181,71 @@ class Binary_Tree:
 
 
 
+'''
+Get Safe Neighbors Function
+'''
+matrix = [
+    [1, 1, 1, 0],
+    [0, 1, 0, 1],
+    [1, 1, 1, 1],
+    [0, 1, 1, 0]
+]
 
+'''
+result:
+[
+    [2, 5, 2, 0],
+    [0, 3, 0, 1],
+    [3, 6, 4, 4],
+    [0, 4, 2, 0]
+]
+'''
+def get_near_neighbors(row, col, web):
+    friends = 0
+
+    copy_col = col
+    # walk to the left
+    while copy_col >= 0:
+        if (copy_col - 1) >= 0:
+            if web[row][copy_col - 1] == 0:
+                break
+            elif web[row][copy_col - 1] == 1:
+                friends += 1
+        copy_col -= 1
+
+    # walk to the right
+    copy_col = col
+    while (copy_col + 1) in range(len(web)):
+        if copy_col < len(web):
+            if web[row][copy_col + 1] == 0:
+                break
+            elif web[row][copy_col + 1] == 1:
+                friends += 1
+        copy_col += 1
+
+    # walk up
+    copy_row = row
+    while copy_row >= 0:
+        if (copy_row - 1) >= 0:
+            if web[copy_row - 1][col] == 0:
+                break
+            elif web[copy_row - 1][col] == 1:
+                friends += 1
+        copy_row -= 1
+
+    # walk down
+    copy_row = row
+    while (copy_row + 1) in range(len(web)):
+        if copy_row < len(web):
+            if web[copy_row + 1][col] == 0:
+                break
+            elif web[copy_row + 1][col] == 1:
+                friends += 1
+        copy_row += 1
+
+    return friends
+
+print(get_near_neighbors(3, 2, matrix))
 
 
 
