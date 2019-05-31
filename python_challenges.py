@@ -274,7 +274,7 @@ class TicTacToe:
             for j in range(3):
                 row.append((i,j))
             self.board.append(row)
-        return self.board
+        print(self.board)
 
     def access_move(self, n):
         for k in self.positions.keys():
@@ -290,11 +290,12 @@ class TicTacToe:
         self.board[pos[0]][pos[1]] = value
         # record move
         self.record_move(value, pos)
-        return self.board
-
-
+        print(self.board)
 
 game1 = TicTacToe()
+game1.make_move('X', (0,2))
+
+
 
 
 
