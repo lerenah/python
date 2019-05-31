@@ -247,6 +247,15 @@ def get_near_neighbors(row, col, web):
 
 print(get_near_neighbors(3, 2, matrix))
 
+def safe_steps(web):
+    for idx, val in enumerate(web):
+        for index, el in enumerate(val):
+            if el != 0:
+                web[idx][index] = get_near_neighbors(idx, index, web)
+    return web
+
+print(safe_steps(matrix))
+
 
 
 
