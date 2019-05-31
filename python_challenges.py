@@ -325,8 +325,7 @@ Stock Price Class
 
 class StockPrices:
 
-    def __init__(self, stock):
-        self.stock = stock
+    def __init__(self):
         self.stocks = []
 
     def addPrice(self, stock, price):
