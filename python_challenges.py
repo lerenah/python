@@ -295,7 +295,28 @@ class TicTacToe:
 game1 = TicTacToe()
 game1.make_move('X', (0,2))
 
+'''
+Working with Robot Classes
+'''
+import random
 
+class Robot:
+    def __init__(self):
+        self.d_floor = 0
+        self.d_jumps = 0
+        self.random = random.randint(0, 2) * 1
+
+    def unreliableJump(self):
+        if self.random == 1:
+            self.d_floor += 1
+            self.d_jumps += 1
+            return True
+        else:
+            return False
+
+    def reliableJump(self):
+        self.random = 1
+        self.unreliableJump()
 
 
 
