@@ -319,6 +319,39 @@ class Robot:
         self.unreliableJump()
 
 
+'''
+Stock Price Class
+'''
+
+class StockPrices:
+
+    def __init__(self, stock):
+        self.stock = stock
+        self.stocks = []
+
+    def addPrice(self, stock, price):
+        if price <= 0:
+            return 'Price must be a positive integer.'
+        for name in self.stocks:
+            if stock in name.keys():
+                self.stocks[name].append(price)
+            else:
+                self.stocks.append({stock: [price]})
+
+    def getPrices(self, stock, n):
+        if n <= 0:
+            return 'The number of prices requested must be a positive integer.'
+        for name in self.stocks:
+            if stock in name.keys():
+                total_stocks = len(self.stocks[name])
+                if n in range(total_stocks):
+                    return self.stocks[name][:n + 1]
+                else:
+                    return 'This stock has {} prices.  How many of those would you like to see?'.format(total_stocks)
+            else:
+                return 'This stock is not yet in our listing.'
+
+
 
 
 
