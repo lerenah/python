@@ -16,4 +16,6 @@ def retrieve_history():
 
 
 def clear_history():
-    stack = []
+    while len(stack):
+      stack.pop()
+
