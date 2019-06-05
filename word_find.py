@@ -41,8 +41,7 @@ def word_find(arr, str):
                         mod_idx, mod_index = get_neighbors(idx, index, letter, arr)
                         reset = count
                         count += 1
-                        while (mod_idx and mod_index) and len(str) - 1 >= count:
-                            mod_idx, mod_index = get_neighbors(mod_idx, mod_index, str[count+1], arr)
+                        while (mod_idx or mod_index) and len(str) - 1 >= count:
                             if count + 1 in range (len(str)):
                                 mod_idx, mod_index = get_neighbors(mod_idx, mod_index, str[count+1], arr)
                                 if mod_idx == -1 and mod_index == -1:
@@ -51,7 +50,7 @@ def word_find(arr, str):
                                 elif count == len(str) - 1:
                                     return True
                                 else:
-                                    count  += 1
+                                    count += 1
 
 
 
