@@ -11,3 +11,31 @@ def expansion(str):
     return contents
 
 print(expansion('3[a]'))
+
+str = '3[a]'
+arr = []
+opened = []
+closed = []
+final_str = ''
+
+for idx, el in enumerate(str):
+  arr.append(el)
+  if el == '[':
+    opened.append(idx)
+  elif el == ']':
+    closed.append(idx)
+
+# use recursion
+
+lidx = 0
+ridx = len(opened) - 1
+while lidx != ridx:
+  opening = opened[ridx]
+  closing = closed[lidx]
+  print(opening)
+  print(closing)
+  num = int(arr[opening - 1])
+  for i in range(num):
+    final_str += str[opening + 1: closing]
+  lidx += 1
+  ridx -= 1
