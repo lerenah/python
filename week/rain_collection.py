@@ -43,5 +43,7 @@ def rain_collector(set_):
                 for el in contents:
                     water += (levels - el)
                 valley = False
+                if set_.index(final) == (len(set_) - 1):
+                    return water
                 final = 0
     return water
