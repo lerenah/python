@@ -17,6 +17,8 @@ def second_highest(arr):
 
 
 def rain_collector(set_):
+    if len(set_) == 0:
+		    return 0
     highest = max(set_)
     valley = False
     contents = []
