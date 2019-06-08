@@ -21,6 +21,7 @@ def rain_collector(set_):
     valley = False
     contents = []
     water = 0
+    counted = []
     for idx, num in enumerate(set_):
         i = idx + 1
         if i in range(len(set_)):
@@ -35,14 +36,20 @@ def rain_collector(set_):
                         break
                     if set_[i] >= num:
                         final = set_[i]
+                        counted.append(i)
                         break
                     contents.append(set_[i])
                     i += 1
             if valley and final != 0:
                 levels = lesser_level(num, final)
-                for el in contents:
-                    water += (levels - el)
-                valley = False
+                if len(counted) == 1:
+                    for el in contents:
+                        water += (levels - el)
+                if idx == counted[0]:
+                    for el in contents:
+                        water += (levels - el)
+                    valley = False
+                    counted = []
                 if set_.index(final) == (len(set_) - 1):
                     return water
                 final = 0
