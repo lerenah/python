@@ -1,3 +1,23 @@
+def has_valleys(arr):
+    dips = False
+    pending = False
+    count_dips = 0
+    if len(arr) < 1:
+        return 0
+    for idx, el in enumerate(arr):
+        dips = False
+        if idx in range(len(arr) - 1):
+            if el > arr[idx + 1]:
+                pending = True
+            if pending:
+                if el < arr[idx + 1]:
+                    dips = True
+                    pending = False
+        if dips:
+            count_dips += 1
+    return count_dips
+
+
 def lesser_level(a, b):
     if a < b:
         return a
@@ -18,12 +38,16 @@ def second_highest(arr):
 
 def rain_collector(set_):
     if len(set_) == 0:
-		    return 0
-    highest = max(set_)
+        return 0
+    peak = False
+    if set_.count(max(set_)) == 1:
+        peak = True
+        highest = max(set_)
     valley = False
     contents = []
     water = 0
     counted = []
+    final = 0
     for idx, num in enumerate(set_):
         i = idx + 1
         if i in range(len(set_)):
@@ -31,12 +55,19 @@ def rain_collector(set_):
                 valley = True
                 contents = []
                 while valley and i in range(len(set_)):
-                    if num == highest:
-                        final, new_arr = second_highest(set_[set_.index(highest) + 1:])
-                        for el in new_arr:
-                            contents.append(el)
-                        break
+                    if peak:
+                        if num == highest:
+                            final, new_arr = second_highest(set_[set_.index(highest) + 1:])
+                            for el in new_arr:
+                                contents.append(el)
+                            counted.append(set_.index(final))
+                            break
+
                     if set_[i] >= num:
+                        final = set_[i]
+                        counted.append(i)
+                        break
+                    if i == (len(set_) - 1):
                         final = set_[i]
                         counted.append(i)
                         break
@@ -47,12 +78,19 @@ def rain_collector(set_):
                 if len(counted) == 1:
                     for el in contents:
                         water += (levels - el)
-                if idx == counted[0]:
-                    for el in contents:
-                        water += (levels - el)
-                    valley = False
-                    counted = []
+                if len(counted):
+                    if idx == counted[0]:
+                        for el in contents:
+                            water += (levels - el)
+                        valley = False
+                        counted = list(filter(lambda x: x != idx, counted))
                 if set_.index(final) == (len(set_) - 1):
                     return water
                 final = 0
+            elif i == (len(set_) - 1) and final == 0:
+                if has_valleys(contents):
+                    water += rain_collector(contents)
+                    return water
+                else:
+                    return water
     return water
