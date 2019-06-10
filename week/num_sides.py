@@ -6,16 +6,20 @@ def all_ones(arr):
            continue
     return True
 
+
 def num_sides(board):
-    num_zeros = 0
-    for row in board:
+    walls = 4
+    for i, row in enumerate(board):
         if all_ones(board):
             return 4
-        else:
-            if len(row) > row.index(0) > 1:
-                num_zeros += 4
-            else:
-                num_zeros += row.count(0)
+        for idx, col in enumerate(row):
+            if col == 0 and idx in range(1, len(row) - 1):
+                walls += 3
+            elif col == 0 and i in range(1, len(board) - 1):
+                walls += 3
+            elif col == 0 and i == idx:
+                walls += 4
+            elif col == 0:
+                walls += 2
 
-    walls = 4 + (num_zeros * 2)
     return walls
