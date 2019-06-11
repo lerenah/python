@@ -21,7 +21,7 @@ def check_fraud(board):
         if len(next):
             for el in next:
                 if transactions[name][0] == el[0]:
-                    if abs(time - transactions[name][2]) < 60:
+                    if abs(time - transactions[name][2]) <= 60:
                         if loc != transactions[name][3]:
                             holds.append(row)
                             holds.append(transactions[name])
