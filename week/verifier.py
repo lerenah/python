@@ -1,4 +1,4 @@
-def check_fraud(board):
+def verifier(board):
     transactions = {}
     holds = []
     next = []
