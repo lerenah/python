@@ -2,7 +2,7 @@ def check_fraud(board):
     transactions = {}
     holds = []
     next = []
-    for idx, row in enumerate(board):
+    for row in board:
         i = 0
         name = row[i]
         i += 1
