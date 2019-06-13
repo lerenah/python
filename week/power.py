@@ -6,7 +6,13 @@ def power(x, n):
         return x
     else:
         base = x
-        while num > 1:
-            base *= x
-            num -= 1
-        return base
+        if n < 0:
+            while n < 1:
+                base /= x
+                n += 1
+
+        else:
+            while num > 1:
+                base *= x
+                num -= 1
+    return base
