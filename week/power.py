@@ -1,6 +1,8 @@
 def power(x, n):
     num = abs(n)
-    if n == 0:
+    if x == 0:
+        return x
+    if n == 0 and x > 0:
         return 1
     elif n == 1:
         return x
