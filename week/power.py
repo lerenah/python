@@ -5,7 +5,8 @@ def power(x, n):
     elif n == 1:
         return x
     else:
+        base = x
         while num > 1:
-            x *= x
+            base *= x
             num -= 1
-        return x
+        return base
