@@ -1,16 +1,25 @@
-import datetime
+import time
 
-def last_three():
-    count = 0
-    timer = datetime.timedelta(seconds=1)
-    ran = False
-    if ran:
-        if count <= 3:
+class Called:
+    def __init__(self):
+        self.times = []
+        self.count = 0
+
+    def counter(self):
+        self.count += 1
+        return self.count
+
+    def last_three(self):
+        self.times.append(time.time())
+        amt = self.counter()
+        if amt <= 3:
             return False
-        elif timer > 3 and count == 3:
+        elif self.times[-1] - self.times[-2] <= 3 and amt > 3:
             return True
-        ran = False
-    def called(a, b):
-        ran = True
-        count += 1
-        return a + b
+
+func = Called()
+
+print(func.last_three())
+print(func.last_three())
+print(func.last_three())
+print(func.last_three())
