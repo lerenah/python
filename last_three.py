@@ -17,9 +17,4 @@ class Called:
         elif self.times[-1] - self.times[-2] <= 3 and amt > 3:
             return True
 
-func = Called()
 
-print(func.last_three())
-print(func.last_three())
-print(func.last_three())
-print(func.last_three())

@@ -37,14 +37,21 @@ class BinaryTree:
         print(self.root)
 
 
-def binary_check(node):
+def isBinary(node):
     if node:
         children = []
         root = node.root
-        while node.left:
-            children.append(node.get_left().root)
-            print(node.get_left().root)
-            node = node.left
-        maxed = max(children)
-        if root < maxed:
-            return False
+        hold = {'current': root.value, 'lower_bound':-999999 , 'upper_bound': 9999999}
+        children.append(hold)
+        while len(children):
+            children.remove(hold)
+            if not hold['lower_bound'] <= hold['current'] <= hold['upper_bound']:
+                return False
+            elif root.left:
+                children.append(root.left)
+            elif root.right:
+                children.append(root.right)
+    return True
+
+
+
