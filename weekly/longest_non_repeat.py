@@ -1,16 +1,15 @@
 def longest(str):
-    count = 0
     start = 0
-    seen = ''
-    while start in range(len(str)):
-        if not str[start].isalpha():
-            start += 1
-            continue
-        elif str[start] not in seen:
-            seen += str[start]
-            count += 1
-            start += 1
+    end = 0
+    seen = []
+    while start in range(len(str)) and end in range(len(str)):
+        if not str[end].isalpha():
+            str = str.replace(str[end], '')
+        if str[end] not in seen:
+            seen.append(str[end])
+            end += 1
         else:
+            seen.pop(0)
             start += 1
-            continue
-    return count
+
+    return end - start
