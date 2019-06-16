@@ -35,6 +35,8 @@ class BinTree:
                 curr.root.left.next = curr.root.right
                 q.append(curr.root.left)
             if curr.root.right:
-                if curr.root.left.next:
-                    curr.root.right.next = curr.root.left.next.root.left
+                if curr.root.left is not None:
+                    if curr.root.left.next:
+                        curr.root.right.next = curr.root.left.next.root.left
                 q.append(curr.root.right)
+
