@@ -1,6 +1,7 @@
 def longest(str):
     start = 0
     end = 0
+    longest = 0
     seen = []
     while start in range(len(str)) and end in range(len(str)):
         if not str[end].isalpha():
@@ -9,7 +10,11 @@ def longest(str):
             seen.append(str[end])
             end += 1
         else:
+            if len(seen) > longest:
+                longest = len(seen)
             seen.pop(0)
             start += 1
 
-    return end - start
+    return longest
+
+print(longest(str1))
