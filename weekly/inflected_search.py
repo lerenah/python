@@ -10,15 +10,23 @@ def search(arr, n):
     # check for asc sort
     elif arr[left] < arr[mid] < arr[right]:
         if n < arr[mid]:
+            if len(arr) <= 3:
+                return mid - 1
             return search(arr[:mid], n)
         elif n > arr[mid]:
+            if len(arr) <= 3:
+                return mid + 1
             return search(arr[mid + 1:], n)
 
     # check for desc sort
     elif arr[left] > arr[mid] > arr[right]:
         if n < arr[mid]:
+            if len(arr) <= 3:
+                return mid + 1
             return search(arr[mid + 1:], n)
         elif n > arr[mid]:
+            if len(arr) <= 3:
+                return mid - 1
             return search(arr[:mid], n)
 
     # check for inflection
