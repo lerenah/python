@@ -8,6 +8,6 @@ def sets(arr):
   subs = [arr[0]]
   rest = arr[1:]
   newArr = sets(rest)
-  first = list(map(lambda x: subs[x], newArr))
+  first = list(map(lambda x: newArr.append(x), subs))
 
   return [newArr.extend(first)]
