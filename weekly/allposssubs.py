@@ -1,13 +1,27 @@
-arr = ['a', 'b', 'c', 'd']
+arr = ['a', 'b', 'c']
 # look at first el in arr
+
+subs = []
+
+def add_to_subs(el):
+  subs.append(el)
+
 
 
 def sets(arr):
-  if len(arr) == 0:
-    return [[]]
-  subs = [arr[0]]
-  rest = arr[1:]
-  newArr = sets(rest)
-  first = list(map(lambda x: newArr.append(x), subs))
+  for el in arr:
+     add_to_subs(el)
 
-  return [newArr.extend(first)]
+  if len(subs) == len(arr):
+    newArr = []
+    for i in subs:
+      s = list(filter(lambda x: x != i, arr))
+      s = ''.join(s)
+      newArr.append(s)
+
+  subs.extend(newArr)
+  subs.append([])
+  subs.append(''.join(arr))
+
+
+  return subs
