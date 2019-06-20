@@ -3,14 +3,9 @@ arr = ['a', 'b', 'c']
 
 subs = []
 
-def add_to_subs(el):
-  subs.append(el)
-
-
-
 def sets(arr):
   for el in arr:
-     add_to_subs(el)
+     subs.append(el)
 
   if len(subs) == len(arr):
     newArr = []
