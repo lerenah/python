@@ -18,7 +18,8 @@ def sets(arr):
         if y not in newArr:
           newArr.append(i + el)
       s = ''.join(s)
-      newArr.append(s)
+      if s not in newArr:
+          newArr.append(s)
 
   subs.extend(newArr)
   subs.append([])
