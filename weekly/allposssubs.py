@@ -1,13 +1,13 @@
 subs = []
-def subSets(soFar, rest):
-  if rest == '':
-    subs.append(list(soFar))
-    print(soFar)
-    return soFar
+def subSets(accum, curr):
+  if curr == '':
+    subs.append(list(accum))
+    print(accum)
+    return accum
   else:
     # include it
-    subSets(soFar + rest[0], rest[1:])
+    subSets(accum + curr[0], curr[1:])
     # exclude it
-    subSets(soFar, rest[1:])
+    subSets(accum, curr[1:])
 
 
