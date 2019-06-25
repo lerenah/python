@@ -1,3 +1,4 @@
+arr = []
 smallest = 9999999
 second_smallest = 999999
 index_smallest = 0
