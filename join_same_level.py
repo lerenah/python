@@ -4,39 +4,39 @@ class BinNode:
         self.left = None
         self.right = None
 
-class BinTree:
-    def __init__(self, node):
-        self.root = node
+    def get_right(self, node):
+        return node.right
 
-    def add_node(self, node):
-        if self.root:
-            curr = self.root
-            if curr.value > node.value:
-                if not curr.left:
-                    curr.left = BinTree(node)
-                else:
-                    curr.left.add_node(node)
-            elif curr.value < node.value:
-                if not curr.right:
-                    curr.right = BinTree(node)
-                else:
-                    curr.right.add_node(node)
-        else:
-            return "Value already in tree"
+    def get_left(self, node):
+        return node.left
 
-    def get_level(self, node):
+    def set_next(self, node):
+        self.next = node
+
+
+def print_nodes(node):
+    if node:
+        if node.left:
+            print_nodes(node.left)
+        print(node.value)
+        if node.right:
+            print_nodes(node.right)
+
+
+def breadth_print(node):
+    if node:
         q = []
         q.append(node)
         while len(q):
-            curr = q[0]
-            q.remove(q[0])
-            print(curr.root.value)
-            if curr.root.left:
-                curr.root.left.next = curr.root.right
-                q.append(curr.root.left)
-            if curr.root.right:
-                if curr.root.left is not None:
-                    if curr.root.left.next:
-                        curr.root.right.next = curr.root.left.next.root.left
-                q.append(curr.root.right)
-
+            curr = q.pop(0)
+            if curr.left:
+                q.append(curr.left)
+                breadth_print(curr.left)
+            # print(curr.value)
+            if curr.right:
+                q.append(curr.right)
+                breadth_print(curr.right)
+            if len(q) == 2:
+                q[0].set_next(q[1])
+                print(q[0].value, q[0].next.value)
+                q = []
