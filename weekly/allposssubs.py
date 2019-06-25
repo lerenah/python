@@ -9,5 +9,3 @@ def subSets(accum, curr):
     subSets(accum + curr[0], curr[1:])
     # exclude it
     subSets(accum, curr[1:])
-
-
