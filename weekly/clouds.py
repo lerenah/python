@@ -12,6 +12,7 @@ def find_neighbors(grid, row, col):
 def adjacent(clouds):
     num_clouds = 0
     for i, row in enumerate(clouds):
+      if 1 in row:
         for j, col in enumerate(row):
             if col == 1:
                 num_clouds += find_neighbors(clouds, i, j)
