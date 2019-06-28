@@ -1,4 +1,4 @@
-arr = []
+arr = [9, 8, 7, 1, 0, 4, 6]
 smallest = 9999999
 second_smallest = 999999
 index_smallest = 0
