@@ -4,7 +4,7 @@ def swap(arr, i, j):
     arr[j] = temp
 
 
-
+# check scratch_1 file
 def selectionSort(array):
     for i in range(len(array) - 1):
         j = i + 1
