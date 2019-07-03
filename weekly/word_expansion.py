@@ -1,25 +1,42 @@
-def expansion(str):
-    scale = 0
+def word(str):
     nums = '123456789'
-    start = False
     output = ''
-    for idx, el in enumerate(str):
-        if el == '[':
+    i = 0
+    idx = 0
+    q = []
+    scale = []
+    start = False
+    while idx in range(len(str)):
+        if str[idx] == '[':
             start = True
+            idx += 1
             continue
-        elif el in nums and scale == 0:
-            scale = int(el)
+        if str[idx] == ']':
+            num = int(''.join(scale))
+            output += ''.join(q) * num
+            idx += 1
+            # reset everything
+            start = False
+            scale = []
+            q = []
             continue
-        if start and scale > 0:
-            while scale > 0:
-                index = idx
-                while str[index] != ']':
-                    if str[index] in nums:
-                        output += expansion(str[index:])
-                        break
-                    else:
-                        output += str[index]
-                    index += 1
-                scale -= 1
+        if str[idx] in nums and start:
+            i = idx
+            while str[i] != ']':
+                i += 1
+            q.extend(word(str[idx:i + 1]))
+            idx = i + 1
+            continue
+        if start:
+            q.append(str[idx])
+            idx += 1
+            continue
+        elif str[idx] in nums:
+            scale.append(str[idx])
+            idx += 1
+            continue
+        else:
+            output += str[idx]
+            idx += 1
 
-            return output
+    return output
