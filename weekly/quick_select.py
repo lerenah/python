@@ -14,7 +14,7 @@ def quick_select_helper(arr, start, end, k):
   if index == k - 1:
     return arr[index]
   elif index < (k - 1):
-    quick_select(arr[:index])
+    quick_select(arr[:index], k)
   elif index > (k - 1):
-    quick_select(arr[index:])
+    quick_select(arr[index:], k)
   return -1
