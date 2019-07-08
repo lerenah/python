@@ -1,8 +1,4 @@
 '''
-Problem Statement:
-
-
-
 Given two arrays:
 
 
@@ -15,22 +11,6 @@ Given two arrays:
 
 Write a function that takes these two arrays, and merges the first one into second one, resulting in an increasingly sorted array of (2*n) positive integers.
 
-
-
-Input Format:
-
-
-
-There are two arguments. First one is an integer array denoting arr1 and second one is also an integer array denoting arr2.
-
-
-
-Output Format:
-
-
-
-Return arr2, containing (2*n) increasingly sorted integers.
-
 '''
 
 
@@ -42,8 +22,8 @@ def merger_first_into_second(arr1, arr2):
     r_idx = 0
     while l_idx < len(arr1) and r_idx < len(arr2):
         if arr1[l_idx] <= arr2[r_idx]:
-            arr2.insert(r_idx, arr1[l_idx])
             arr2.pop()
+            arr2.insert(r_idx, arr1[l_idx])
             l_idx += 1
         else:
             r_idx += 1
