@@ -1,7 +1,10 @@
 def perms(str):
+    if not len(str):
+        return None
     rest = []
     perms_helper(str, [], rest)
     return rest
+
 
 def perms_helper(str, pos=[], rest=[]):
     if len(pos):
@@ -20,6 +23,5 @@ def perms_helper(str, pos=[], rest=[]):
         possibles += str[0]
         pos.append(possibles)
         perms_helper(str[1:], pos, rest)
-
 
     return possibles
