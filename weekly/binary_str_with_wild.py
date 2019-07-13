@@ -25,3 +25,4 @@ def perms_helper(str, pos=[], rest=[]):
         perms_helper(str[1:], pos, rest)
 
     return possibles
+
