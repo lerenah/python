@@ -19,53 +19,37 @@ class BinTree:
     def __init__(self, node=None):
         self.root = node
         self.message = []
-        self.left_counts = 0
-        self.right_counts = 0
-        self.peak = []
         self.code = ''
-
-    def get_most_left(self, node, count=0):
-        if node.left:
-            count += 1
-            self.get_most_left(node.left, count)
-            self.message.append((node.left.data, count))
-        print(node.data, 'is current node')
-        if node.right:
-            self.right_counts += 1
-            self.get_most_left(node.right)
-
-    def get_leftest(self):
-        maximum = max(sorted(self.message, key=lambda s: s[1]))
-        print(maximum[0])
-        self.code += maximum[0]
-        print(self.message)
 
     def bfs(self, node):
         q = [node]
-        self.peak.append(node.data)
-        while len(q):
-            root = q.pop(0)
-            print(root.data)
-            if root.left:
-                q.append(root.left)
-                print(self.code)
-                self.message.append(root.left.data)
-            # print(self.message)
-            if root.right:
-                q.append(root.right)
-                self.message.append(root.right.data)
-        print(self.peak)
-        print(self.message)
+        root = q.pop(0)
+        if root.left:
+            self.bfs(root.left)
+        self.message.append(root.data)
+        if root.right:
+            self.message.append('|')
+            self.bfs(root.right)
 
     def decode(self):
-        self.code += self.message.pop()
-        self.code += self.message.pop(0)
-        self.code += self.message.pop()
-        self.code += self.peak.pop(0)
-        self.code += self.message.pop()
-        self.code += self.peak.pop()
-
-        print(self.code)
+        idx = self.message.index('|')
+        left_side = self.message[:idx]
+        right_side = self.message[idx + 1:]
+        if len(left_side) >= len(right_side):
+            starter_arr = left_side
+            non_starter = right_side
+        else:
+            starter_arr = right_side
+            non_starter = left_side
+        i = 0
+        while i < len(starter_arr) and i in range(len(non_starter)):
+            self.code += starter_arr[i]
+            self.code += non_starter[i]
+            i += 1
+            print(self.code)
+        if len(starter_arr):
+            self.code += ''.join(starter_arr[i:])
+        return self.code
 
     def print_tree(self, node):
         print(node.data, '/\n')
