@@ -20,35 +20,19 @@ class BinTree:
         self.root = node
         self.message = []
         self.code = ''
+        self.visited = []
 
-    def bfs(self, node):
-        q = [node]
-        root = q.pop(0)
+    def dfs(self, root, row=0, col=0):
         if root.left:
-            self.bfs(root.left)
-        self.message.append(root.data)
+            self.dfs(root.left, row + 1, col - 1)
+        self.visited.append((root.data, row, col))
         if root.right:
-            self.message.append('|')
-            self.bfs(root.right)
+            self.dfs(root.right, row + 1, col + 1)
 
     def decode(self):
-        idx = self.message.index('|')
-        left_side = self.message[:idx]
-        right_side = self.message[idx + 1:]
-        if len(left_side) >= len(right_side):
-            starter_arr = left_side
-            non_starter = right_side
-        else:
-            starter_arr = right_side
-            non_starter = left_side
-        i = 0
-        while i < len(starter_arr) and i in range(len(non_starter)):
-            self.code += starter_arr[i]
-            self.code += non_starter[i]
-            i += 1
-            print(self.code)
-        if len(starter_arr):
-            self.code += ''.join(starter_arr[i:])
+        self.visited.sort(key=lambda x: (x[2], x[1]))
+        for el in self.visited:
+            self.code += el[0]
         return self.code
 
     def print_tree(self, node):
