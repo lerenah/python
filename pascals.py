@@ -11,4 +11,12 @@ def pascals(n):
         triangle.append(row)
         output = row
         i += 1
-    return triangle
+    string_output = ''
+    n = len(triangle) - 1
+    for el in triangle:
+        el = [i for i in el if i != 0]
+        el = [str(i) for i in el]
+        string_output += " " * n + ' '.join(el) + '\n'
+        n -= 1
+
+    return string_output
