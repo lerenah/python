@@ -53,5 +53,17 @@ def isBinary(node):
                 children.append(root.right)
     return True
 
+# Alternative solution
+def check_tree(root, _min, _max):
+    if root == None:
+        return 1
+    if _min > root.val  or root.val > _max:
+        return 0
+    return check_tree(root.left_ptr, _min, root.val) and check_tree(root.right_ptr, root.val, _max)
+
+def isBST(root):
+    _min = float('-inf')
+    _max = float('inf')
+    return check_tree(root, _min, _max)
 
 
