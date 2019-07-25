@@ -12,11 +12,12 @@ def convert_any_base(n, case):
         n = abs(n)
     while n > 0:
         rem = n % base
-        if rem > 9 and base == 16:
-            num.append(hex_conversions[rem])
+        if base == 6:
+            num.append(str(case[rem]))
         else:
-            num.append(str(rem))
+            num.append(str(case[rem - 1]))
         n = n // base
+        # use n to get str character
     num = list(reversed(num))
     if negative:
         return '-' + ''.join(num)
