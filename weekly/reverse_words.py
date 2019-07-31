@@ -1,3 +1,7 @@
+def swap(arr, i, j):
+    arr[i], arr[j] = arr[j], arr[i]
+
+
 def reverse_words(message):
     if len(message) == 1:
         return message
