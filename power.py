@@ -1,20 +1,15 @@
-def power(x, n):
-    num = abs(n)
-    if x == 0:
-        return x
-    if n == 0 and x > 0:
-        return 1
-    elif n == 1:
-        return x
-    else:
-        base = x
-        if n < 0:
-            while n < 1:
-                base /= x
-                n += 1
+def myPow(self, x, n):
+    """
+    :type x: float
+    :type n: int
+    :rtype: float
+    """
+    exp = abs(n)
+    output = 1
+    while exp > 0:
+        output *= x
+        exp -= 1
+    if n < 0:
+        return 1 / output
 
-        else:
-            while num > 1:
-                base *= x
-                num -= 1
-    return base
+    return output
