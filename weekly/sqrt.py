@@ -24,3 +24,12 @@ def mySqrt(self, x):
         #         n = ans - 1
 
         # return n
+
+# shortened solution
+def sqrt(n):
+    i = 0
+    while (i*i) <= n:
+        if (i+1) * (i+1) > n:
+            return i
+        else:
+            i += 1
