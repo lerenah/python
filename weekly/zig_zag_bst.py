@@ -12,25 +12,25 @@ def traverse(root):
     return result
   q = deque()
   q.append(root)
-  count = 0
+  next_level = True
   while q:
     l = len(q)
     level = []
-    count += 1
     for _ in range(l):
       node = q.popleft()
       level.append(node)
-      if node.left:
-        if count % 2 == 0:
-          q.appendleft(node.left)
-        else:
-          q.append(node.left)
-      if node.right:
-        if count % 2 == 0:
+      if not next_level:
+        if node.left:
+            q.appendleft(node.left)
+        if node.right:
           q.appendleft(node.right)
-        else:
+      else:
+        if node.left:
+          q.append(node.left)
+        if node.right:
           q.append(node.right)
     result.append(level)
+    next_level = not next_level
 
   return result
 
