@@ -6,7 +6,31 @@
 #         self.right = None
 
 
+
+#better solution
+def isBalanced(self, root):
+    """
+    :type root: TreeNode
+    :rtype: bool
+    """
+    if not root:
+        return True
+    self.diff = 0
+    def helper(node):
+        if not node:
+            return 0
+        left = helper(node.left)
+        right = helper(node.right)
+        self.diff = max(self.diff, abs(left-right))
+        return 1 + max(left,right)
+
+    helper(root)
+    return False if self.diff > 1 else True 
+
+
+
 class Solution(object):
+
     def isBalanced(self, root):
         """
         :type root: TreeNode
