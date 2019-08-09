@@ -23,10 +23,5 @@ def merge(self, nums1, m, nums2, n):
           nums1[end] = nums2[n2_i]
           end -= 1
           n2_i -= 1
-  elif n1_i >= 0:
-      while n1_i >= 0:
-          nums1[end] = nums1[n1_i]
-          end -= 1
-          n1_i -= 1
 
   return nums1
