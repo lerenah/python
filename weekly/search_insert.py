@@ -1,3 +1,28 @@
+def search(a, target):
+  high = len(a) - 1
+  low = 0
+  while low <= high:
+    mid = (high + low) // 2
+    if a[mid] == target:
+      return mid
+    if a[mid] > target:
+      high = mid - 1
+    else:
+      low = mid + 1
+
+  if high <= 0:
+    high = 0
+    while a[high] < target:
+      high += 1
+    return high
+  if low >= len(a) - 1:
+    low = len(a) - 1
+    while a[low] > target:
+      low -= 1
+    return low + 1
+
+
+# alternative
 def searchInsert(self, nums, target):
     """
     :type nums: List[int]
