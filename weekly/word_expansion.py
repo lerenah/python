@@ -42,21 +42,27 @@ def word(str):
     return output
 
     # optimal solution
-    def code(s):
-        num_stack, word_stack, num, word = [], [], '', ''
+    def decodeString(s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        words = []
+        scale = []
+        num = ''
+        output = ''
 
-        for ch in s:
-            if ch.isdigit():
-                num += ch
-            elif ch.isalpha():
-                word += ch
+        for el in s:
+            if el.isdigit():
+                num += el
+            elif el.isalpha():
+                output += el
+            elif el == '[':
+                words.append(output)
+                scale.append(int(num))
+                num, output = '', ''
+            elif el == ']':
+                output = words.pop() + output * scale.pop()
 
-            elif ch == '[':
-                num_stack.append(int(num))
-                word_stack.append(word)
-                num, word = '', ''
-
-            elif ch == ']':
-                word = word_stack.pop() + word * num_stack.pop()
-        return word
+        return output
 
