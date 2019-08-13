@@ -10,16 +10,21 @@ def search(a, target):
     else:
       low = mid + 1
 
-  if high <= 0:
-    high = 0
-    while a[high] < target:
-      high += 1
-    return high
-  if low >= len(a) - 1:
-    low = len(a) - 1
-    while a[low] > target:
-      low -= 1
-    return low + 1
+  # if high <= 0:
+  #   high = 0
+  #   while a[high] < target:
+  #     high += 1
+  #   return high
+  # if low >= len(a) - 1:
+  #   low = len(a) - 1
+  #   while a[low] > target:
+  #     low -= 1
+  #   return low + 1
+  
+  if target > a[mid]:
+    return mid + 1
+  else:
+    return mid
 
 
 # alternative
