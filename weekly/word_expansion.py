@@ -40,3 +40,23 @@ def word(str):
             idx += 1
 
     return output
+
+    # optimal solution
+    def code(s):
+        num_stack, word_stack, num, word = [], [], '', ''
+
+        for ch in s:
+            if ch.isdigit():
+                num += ch
+            elif ch.isalpha():
+                word += ch
+
+            elif ch == '[':
+                num_stack.append(int(num))
+                word_stack.append(word)
+                num, word = '', ''
+
+            elif ch == ']':
+                word = word_stack.pop() + word * num_stack.pop()
+        return word
+
