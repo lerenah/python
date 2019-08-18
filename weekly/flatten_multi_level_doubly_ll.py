@@ -31,3 +31,31 @@ def flatten(self, head):
 
   get_last(head)
   return head
+
+
+  # faster solution
+  def flatten(self, head):
+    """
+    :type head: Node
+    :rtype: Node
+    """
+    if head is None:
+        return head
+    curr = head
+    while curr:
+        if not curr.child:
+            curr = curr.next
+            continue
+        print(curr.val, ' is curr')
+        kid = curr.child
+        while kid.next:
+            print(kid.val)
+            kid = kid.next
+        kid.next = curr.next
+        if curr.next:
+            curr.next.prev = kid
+        curr.next = curr.child
+        curr.child.prev = curr
+        curr.child = None
+        curr = curr.next
+    return head
