@@ -22,3 +22,23 @@ def subarraySum(nums, k):
       else:
           totals[total] = 1
   return res
+
+
+
+end, start = 0, 0 # 5, 1
+length = float('inf') # 3
+temp_sum = 0 # 12
+while end in range(len(arr)):
+  # if (end - start) + 1 >= length:
+  #   start += 1
+  temp_sum += arr[end]
+  if temp_sum >= s:
+    if (end - start) + 1 < length: # 2 - 0 = 3
+      length = (end - start) + 1
+      temp_sum -= arr[start]
+      temp_sum -= arr[end]
+      start += 1
+      end -= 1
+  end += 1
+
+return length
