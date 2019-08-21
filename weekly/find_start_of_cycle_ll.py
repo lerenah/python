@@ -10,6 +10,20 @@ def find_cycle_start(head):
     slow = slow.next
   return head
 
+def find_cycle_start(head):
+  # TODO: Write your code here
+  if head is None:
+    return head
+  fast, slow = head, head
+  seen = {}
+  while fast is not None and fast.next is not None:
+    seen[fast] = True
+    slow = slow.next
+    fast = fast.next.next
+    if fast in seen or fast == slow:
+      return fast
+  return head
+
 
 def has_cycle(head):
   # TODO: Write your code here
